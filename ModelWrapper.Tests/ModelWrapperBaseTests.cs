@@ -1303,10 +1303,10 @@
             return new()
             {
                 TM5Property1 = property1Value,
-                TM5Property2 = new() { testModel1 },
+                TM5Property2 = [testModel1],
                 TM5Property3 = property3Value,
                 TM5Property4 = testModel2,
-                TM5Property5 = new() { testModel3 },
+                TM5Property5 = [testModel3],
                 TM5Property6 = testModel4
             };
         }

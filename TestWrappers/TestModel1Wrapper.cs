@@ -5,12 +5,8 @@
     using System.ComponentModel.DataAnnotations;
     using TestModels;
 
-    public class TestModel1Wrapper : ModelWrapperBase<TestModel1>
+    public class TestModel1Wrapper(TestModel1 model) : ModelWrapperBase<TestModel1>(model)
     {
-        public TestModel1Wrapper(TestModel1 model) : base(model)
-        {
-        }
-
         public int TM1Property1
         {
             get => GetValue<int>();

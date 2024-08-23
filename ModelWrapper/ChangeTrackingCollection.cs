@@ -16,13 +16,13 @@
         /// <include file="docs.xml" path="docs/members[@name=&quot;changetrackingcollection&quot;]/Constructor/*"/>
         public ChangeTrackingCollection(IEnumerable<T> items) : base(items)
         {
-            _originalCollection = this.ToList();
+            _originalCollection = [.. this];
 
             AttachItemPropertyChangedHandler(_originalCollection);
 
-            _addedItems = new ObservableCollection<T>();
-            _removedItems = new ObservableCollection<T>();
-            _modifiedItems = new ObservableCollection<T>();
+            _addedItems = [];
+            _removedItems = [];
+            _modifiedItems = [];
 
             AddedItems = new ReadOnlyObservableCollection<T>(_addedItems);
             RemovedItems = new ReadOnlyObservableCollection<T>(_removedItems);
@@ -54,7 +54,7 @@
                     item.AcceptChanges();
                 }
 
-                _originalCollection = this.ToList();
+                _originalCollection = [.. this];
                 ClearTrackingItems();
                 OnPropertyChanged(new PropertyChangedEventArgs(nameof(IsChanged)));
             }

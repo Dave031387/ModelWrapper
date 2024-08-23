@@ -2040,7 +2040,3 @@ public class PersonWrapper : ModelClass<Person>
     }
 }
 ```
-
----
-# Compatibility
-The ___ModelWrapper___ class library was developed using ___C# 10.0___ and ___.NET 6.0___ and should be usable in any project that supports those versions.

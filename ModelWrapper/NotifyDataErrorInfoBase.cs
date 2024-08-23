@@ -13,19 +13,17 @@
         protected readonly Dictionary<string, List<string>> Errors;
 
         /// <include file="docs.xml" path="docs/members[@name=&quot;notifydataerrorinfobase&quot;]/Constructor/*"/>
-        protected NotifyDataErrorInfoBase() => Errors = new();
+        protected NotifyDataErrorInfoBase() => Errors = [];
 
         /// <include file="docs.xml" path="docs/members[@name=&quot;notifydataerrorinfobase&quot;]/ErrorsChanged/*"/>
         public event EventHandler<DataErrorsChangedEventArgs>? ErrorsChanged;
 
         /// <include file="docs.xml" path="docs/members[@name=&quot;notifydataerrorinfobase&quot;]/HasErrors/*"/>
-        public bool HasErrors => Errors.Any();
+        public bool HasErrors => Errors.Count > 0;
 
         /// <include file="docs.xml" path="docs/members[@name=&quot;notifydataerrorinfobase&quot;]/GetErrors/*"/>
         public IEnumerable GetErrors(string? propertyName) =>
-            propertyName is not null && Errors.ContainsKey(propertyName)
-            ? Errors[propertyName]
-            : new List<string>();
+            propertyName is not null && Errors.TryGetValue(propertyName, out List<string>? value) ? value : [];
 
         /// <include file="docs.xml" path="docs/members[@name=&quot;notifydataerrorinfobase&quot;]/ClearErrors/*"/>
         protected void ClearErrors()

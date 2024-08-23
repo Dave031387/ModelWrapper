@@ -571,12 +571,7 @@ namespace ModelWrapper
             }
             else
             {
-                List<TestModel1Wrapper> expected = new();
-
-                foreach (TestModel1Wrapper item in expectedItems)
-                {
-                    expected.Add(item);
-                }
+                List<TestModel1Wrapper> expected = [.. expectedItems];
 
                 actual
                     .Should()
@@ -659,10 +654,10 @@ namespace ModelWrapper
             TestModel5 testModel5 = new()
             {
                 TM5Property1 = 100,
-                TM5Property2 = collectionItems.ToList(),
+                TM5Property2 = [.. collectionItems],
                 TM5Property3 = property3Value,
                 TM5Property4 = new(),
-                TM5Property5 = new(),
+                TM5Property5 = [],
                 TM5Property6 = new() { TM4Property2 = 'a' }
             };
 

@@ -151,11 +151,11 @@
 
         public void Validate()
         {
-            List<ValidationResult> results = new();
+            List<ValidationResult> results = [];
             ValidationContext context = new(this);
             Validator.TryValidateObject(this, context, results);
 
-            if (results.Any())
+            if (results.Count > 0)
             {
                 List<string> propertyNames = results.SelectMany(r => r.MemberNames).Distinct().ToList();
 
